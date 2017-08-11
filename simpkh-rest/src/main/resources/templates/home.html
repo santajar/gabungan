@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Administrator SIMPKH 2017</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <?php include 'template/style.html'; ?>
+  <object th:include="template/style:: style" th:remove="tag" />
+  <object th:include="template/jscript:: jscript" th:remove="tag" />
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
 
-  <?php include 'template/topmenu.html'; ?>
+  <div th:replace="template/topmenu :: topmenu"/>
 
   <!-- =============================================== -->
 
@@ -23,11 +24,11 @@
 
   <!-- /.content-wrapper -->
 
-  <?php include 'template/footer.html'; ?>
+  <div th:replace="template/footer :: footer"/>
   
 </div>
 <!-- ./wrapper -->
-<?php include 'template/jscript.html'; ?>
+
 
 </body>
 </html>
