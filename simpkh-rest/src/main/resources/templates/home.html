@@ -11,9 +11,9 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
-<div class="wrapper">
 
-  <div th:replace="template/topmenu :: topmenu"/>
+
+  <div th:include="template/topmenu :: topmenu"/>
 
   <!-- =============================================== -->
 
@@ -24,9 +24,9 @@
 
   <!-- /.content-wrapper -->
 
-  <div th:replace="template/footer :: footer"/>
+  <div th:include="template/footer :: footer"/>
   
-</div>
+
 <!-- ./wrapper -->
 
 
