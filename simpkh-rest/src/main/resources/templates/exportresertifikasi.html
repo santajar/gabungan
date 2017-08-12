@@ -195,11 +195,11 @@
   </div>
 
 
-  <?php include 'template/footer.html'; ?>
+  <div th:include="template/footer :: footer"/>
 
 </div>
 <!-- ./wrapper -->
 <?php include 'template/jscript.html'; ?>
-
+<object th:include="template/jscript::jscript" th:remove="tag"></object>
 </body>
 </html>
