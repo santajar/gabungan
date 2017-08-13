@@ -38,7 +38,11 @@ public class KpmResertifikasiEntity implements Serializable{
     //"JNSKEL","HUBKRT_KD","HUB_KRT","NIK","NOKK","KDPROP","NMPROP","KDKABU","NMKABU","KDKECA",
     //"NMKECA","KDKELR","NMKELR","ALAMAT"
     
-    @EmbeddedId
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@EmbeddedId
     private KpmResertifikasiPK id;
     @Column(name = "TAHUNKEPESERTAAN")
     private Integer tahunKepesertaan;

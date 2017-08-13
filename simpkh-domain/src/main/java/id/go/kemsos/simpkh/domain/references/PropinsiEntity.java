@@ -23,7 +23,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "MST_PROPINSI")
 public class PropinsiEntity implements Serializable {
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
     @Column(name = "KD_PROP", length = 2)
     private int kode;
     @Column(name = "PROP_NAME", length = 100)

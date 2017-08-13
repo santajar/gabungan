@@ -16,7 +16,12 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class KpmResertifikasiPK implements Serializable {
     
-    @Column(name="NOPESERTA", length=15)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Column(name="NOPESERTA", length=15)
     private String nomorPeserta;
     
     @Column(name="NOART", length=20)
