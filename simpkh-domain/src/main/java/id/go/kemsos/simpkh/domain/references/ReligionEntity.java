@@ -19,11 +19,7 @@ import javax.persistence.Table;
 @Table(name = "MST_RELIGION")
 public class ReligionEntity implements Serializable {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
+    @Id
     private Long id;
     @Column(name = "RELIGION_NAME", nullable = false, length = 20)
     private String name;
