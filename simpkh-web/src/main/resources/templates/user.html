@@ -18,7 +18,7 @@
 
  <div class="container">
  			
- 	<form class="form-horizontal">
+ 	<form class="form-horizontal" action="#" th:action="@{/registration}" >
 <fieldset>
 
 <!-- Form Name -->
@@ -26,27 +26,27 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="txtEmail">Username</label>  
+  <label class="col-md-4 control-label" for="textinput">Username</label>  
   <div class="col-md-4">
-  <input id="txtEmail" name="txtEmail" type="email" placeholder="Email..." class="form-control input-md">
+  <input id="textinput" name="textinput" type="email" th:field="*{email}" placeholder="Email..." class="form-control input-md">
    
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="txtPass">Password</label>  
+  <label class="col-md-4 control-label" for="textinput">Password</label>  
   <div class="col-md-4">
-  <input id="txtPass" name="txtPass" type="password" placeholder="Password..." class="form-control input-md">
+  <input id="textinput" name="textinput" type="password" th:field="*{password}" placeholder="Password..." class="form-control input-md">
    
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="txtFullname">Full Name</label>  
+  <label class="col-md-4 control-label" for="textinput">Full Name</label>  
   <div class="col-md-4">
-  <input id="txtFullname" name="txtFullname" type="text" placeholder="Name..." class="form-control input-md">
+  <input id="textinput" name="namefull" type="text" th:field="*{namefull}" placeholder="Name..." class="form-control input-md">
    
   </div>
 </div>
@@ -56,10 +56,13 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectbasic">Provinsi</label>
   <div class="col-md-4">
-    <select id="selectbasic" name="selectbasic" class="form-control">
-      <option value="1">....</option>
-      <option value="2">....</option>
-    </select>
+    <select class="form-control">
+       <option selected="selected">Jawa Barat</option>
+       <option value="1">Sumatera Utara</option>
+       <option value="2">Sumatera Barat</option>
+       <option value="3">Bengkulu</option>
+       <option value="4">Jambi</option>
+     </select>
   </div>
 </div>
 
@@ -67,10 +70,13 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectbasic">Kelurahan</label>
   <div class="col-md-4">
-    <select id="selectbasic" name="selectbasic" class="form-control">
-      <option value="1">....</option>
-      <option value="2">....</option>
-    </select>
+    <select class="form-control">
+       <option selected="selected">Ulujami</option>
+       <option value="1">Petukangan Utara</option>
+       <option value="2">Petukangan Selatan</option>
+       <option value="3">Pesanggrahan</option>
+       <option value="4">Bintaro</option>
+     </select>
   </div>
 </div>
 
@@ -78,9 +84,12 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectbasic">Kabupaten</label>
   <div class="col-md-4">
-    <select id="selectbasic" name="selectbasic" class="form-control">
-      <option value="1">....</option>
-      <option value="2">....</option>
+    <select class="form-control">
+      <option selected="selected">Bogor</option>
+      <option value="1">Sukabumi</option>
+      <option value="2">Cianjur</option>
+      <option value="3">Garut</option>
+      <option value="4">Tasikmalaya</option>
     </select>
   </div>
 </div>
@@ -89,9 +98,12 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectbasic">Kecamatan</label>
   <div class="col-md-4">
-    <select id="selectbasic" name="selectbasic" class="form-control">
-      <option value="1">....</option>
-      <option value="2">....</option>
+    <select class="form-control" >
+      <option selected="selected">Cibinong</option>
+      <option value="1">Citeurep</option>
+      <option value="2">Gunung Putri</option>
+      <option value="3">Jonggol</option>
+      <option value="4">Cileungsi</option>
     </select>
   </div>
 </div>
@@ -119,6 +131,7 @@
 </div>
 
 </fieldset>
+<span th:utext="${successMessage}"></span>
 </form>
  	
   </div>
