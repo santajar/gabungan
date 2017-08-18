@@ -26,11 +26,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "MST_KABUPATEN")
 public class KabupatenEntity implements Serializable {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
+    @Id
     @Column(name = "KD_KAB", length = 4)
     private int kode;
     @Column(name = "KAB_NAME", length = 100)

@@ -31,11 +31,7 @@ import javax.persistence.UniqueConstraint;
 @Table(name="M_PENDAMPING", uniqueConstraints={@UniqueConstraint(columnNames={"USERID"})})
 public class PendampingEntity implements Serializable{
     
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
+    @Id
     @Column(name="KDPENDAMPING", nullable=false, length=9)
     private String kdpendamping;
     @Column(name="NMPENDAMPING", nullable=false, length=50)

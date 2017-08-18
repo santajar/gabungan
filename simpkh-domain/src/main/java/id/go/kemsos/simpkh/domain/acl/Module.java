@@ -35,19 +35,7 @@ public class Module implements Serializable{
     @Column(name = "URL", length = 100, nullable = false)
     private String url;
 
-    
-    public Module() {
-		super();
-	}
-
-	public Module(Long id, String name, String url) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.url = url;
-	}
-
-	public Long getId() {
+    public Long getId() {
         return this.id;
     }
 
