@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8"> </meta>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> </meta>
   <title>Administrator SIMPKH 2017</title>
   <!-- Tell the browser to be responsive to screen width -->
   <object th:include="template/style:: style" th:remove="tag" />
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  
+  </meta>
 </head>
 
 <body class="hold-transition login-depan">
@@ -44,37 +47,35 @@
                 <div class="login-box">
                     <div class="login-logo">
                         <a href="index.html">
-                            <img src="dist/img/logoPKH.png">
+                            <img src="dist/img/logoPKH.png"></img>
                         </a>
                     </div>
                     <!-- /.login-logo -->
                 <div class="login-box-body">
                     <p class="login-box-msg"></p>
 
-                   <form autocomplete="off" action="#" th:action="@{/login}"
-					th:object="${user}" method="post" class="form-horizontal"
-					role="form">
+                   <form autocomplete="off" action="#" th:action="@{/login}" method="post" class="form-horizontal"
+					role="form">				
 					    <div class="box-body">
                             <div class="form-group">
 							<div class="col-sm-9">
 							<label >Username</label>
-							<input type="text" th:field="*{username}" placeholder="Username"
-									class="form-control" /> 
+							<input type="text" name="username"  placeholder="Username"
+									class="form-control" /> </input>
 							</div>
 						</div>
-	
 						<div class="form-group">
 							<div class="col-sm-9">
 							<label>Password</label>
-								<input type="password" th:field="*{password}"
-									placeholder="Password" class="form-control" /> 
+								<input type="password" name="password"
+									placeholder="Password" class="form-control" /> </input>
 							</div>
 						</div>
                             <div class="form-group">
                                 <div class="col-sm-offset-4 col-sm-8">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox"> Remember me
+                                            <input type="checkbox"> Remember me</input>
                                         </label>
                                     </div>
                                 </div>
