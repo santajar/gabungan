@@ -46,6 +46,7 @@ public class DefaultController {
         return modelAndView; 
     }
 
+
 	@GetMapping("/home")
     public String home() {
         return "/home";
@@ -72,6 +73,7 @@ public class DefaultController {
         return "/admin";
     }
 
+<<<<<<< HEAD
     @GetMapping("/useradd")
     public ModelAndView user() {
     	ModelAndView modelAndView = new ModelAndView();		
@@ -89,6 +91,7 @@ public class DefaultController {
 		return modelAndView;
     }
 
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView login(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, 
 	  		  Model model) {
@@ -97,7 +100,7 @@ public class DefaultController {
 		securityService.autologin(userForm.getUsername(),userForm.getPassword());
 		System.out.println(securityService.findLoggedInUsername());
 		System.out.println(userForm.getFullName());
-		
+
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName("index");
 		} else {
