@@ -37,6 +37,7 @@ public class DefaultController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 			modelAndView.addObject("successMessage", "User has been registered successfully");
+			modelAndView.addObject("user", new User());
 			modelAndView.setViewName("index");
 //			modelAndView.setView("index");
 			
@@ -75,16 +76,16 @@ public class DefaultController {
         return "/admin";
     }
 
-    @GetMapping("/useradd")
-    public String user() {
-        return "user";
-    }
+//    @GetMapping("/useradd")
+//    public String user() {
+//        return "user";
+//    }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView login(@ModelAttribute("user") User user, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
 		User userExists = userService.findByUsername(user.getUsername());
-		System.out.println(userExists.toString());
+//		System.out.println(userExists.toString());
 		if (userExists != null) {
 			bindingResult
 					.rejectValue("email", "error.user",

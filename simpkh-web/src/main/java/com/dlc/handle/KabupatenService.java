@@ -9,9 +9,9 @@ import id.go.kemsos.simpkh.domain.references.repository.JpaKabupatenRepository;
 public class KabupatenService {
 
 	
-	@Autowired
-	private JpaKabupatenRepository jpaKabupatenRepository;
-	
+//	@Autowired
+//	private JpaKabupatenRepository jpaKabupatenRepository;
+//	
 	public KabupatenService() {
 		// TODO Auto-generated constructor stub
 		super();
