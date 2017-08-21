@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Administrator SIMPKH 2017</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <object th:include="template/style:: style" th:remove="tag" />
+  <object th:include="template/jscript:: jscript" th:remove="tag" />
+</head>
+<body >
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <div th:include="template/topmenu :: topmenu"></div>
+<div class="alert alert-danger" th:if="${successMessage}" >
+        <span th:utext="${successMessage}"></span>        
+</div>
+<br>
+  <!-- =============================================== -->
+	 <div class='col-sm-2 col-xs-4 pull-left' >
+            <a href="#" th:href="@{/useradd}" class="btn btn-success" ><i class="glyphicon glyphicon-plus"></i> Create</a>
+        </div>
+		<div class='col-sm-4 col-xs-4 pull-right' >
+			<div class="input-group pull-right">
+				<input type="text" name="cari" id='cari' class="form-control col-sm-5 col-xs-12 input" placeholder="Search Title . . ." onchange='pageLoad(1)'>
+				<div class="input-group-btn">
+					<button class="btn btn-default"><i class="glyphicon glyphicon-search"></i> Search</button>
+				</div>
+			</div>
+		</div>
+ 
+        <h1></h1>
+ 		
+        <br>
+        <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Nama User</th>
+                        <th>kode Kabupaten</th>
+                        <th>Kode Kecamatan</th>
+                        <th >Delete</th>
+                        <th>Edit</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.username}">user</td>
+                        <td th:text="${user.fullName}">Nama User</td>
+                        <td th:text="${user.kodeKabupaten}">Kode Kabupaten</td>
+                        <td th:text="${user.kodeKecamatan}">Kode Kecamatan</td>
+                        <td ><a th:href="@{/userdelete/{id}(id=${user.id})}">Delete</a></td>
+                        <td ><a th:href="@{/useredit/{id}(id=${user.id})}">Edit</a></td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+
+  <div th:include="template/footer :: footer"/>
+
+</div>
+<!-- ./wrapper -->
+
+</body>
+</html>
