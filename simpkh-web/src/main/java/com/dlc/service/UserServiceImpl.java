@@ -1,6 +1,8 @@
 package com.dlc.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -29,4 +31,26 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
+	@Override
+	public User findByID(Long id) {
+		// TODO Auto-generated method stub
+		return userRepository.findByid(id);
+	}
+
+	@Override
+	public void delete(User user) {
+		// TODO Auto-generated method stub
+		userRepository.delete(user);
+	}
+
+	@Override
+	public Page<User> findAll(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return userRepository.findAll(pageable);
+	}
+
+
+	
+	
 }

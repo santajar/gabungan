@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Administrator SIMPKH 2017</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-   <object th:include="template/style:: style" th:remove="tag" />
-   <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+  <object th:include="template/style:: style" th:remove="tag" ></object>
+  <object th:include="template/jscript:: jscript" th:remove="tag" ></object>
    <style type="text/css">
    	a.export, a.export:visited {
  	   display: inline-block;
@@ -18,6 +18,54 @@
     	padding:8px;
 	}
    </style>
+   <script th:inline="javascript">
+	
+  $(document).ready(function(){
+	  $('#kodePropinsi').change(function() {
+			
+		    $.ajax({
+		        type:"GET",
+		        url : "/getKabupatenValues",
+		        data : { state: $('#kodePropinsi').val()},
+		        success : function(data) {
+		        	var listItems= "";
+		            $('#kodeKabupaten').empty(); //remove all child nodes
+		            $.each(data, function(key, value) {
+		            	console.log(value);
+		            	console.log(key);
+		                  listItems+= "<option value='" + key + "'>" + value + "</option>";
+		         }); 
+		            $("#kodeKabupaten").html(listItems);
+		        },
+		        
+		        error: function() {
+		            alert('Error occured');
+		        }
+		    });
+		});
+	  $('#kodeKabupaten').change(function() {
+			
+		    $.ajax({
+		        type:"GET",
+		        url : "/getKecamatanValues",
+		        data : { state: $('#kodeKabupaten').val()},
+		        success : function(data) {
+		        	var listItems= "<option value=''></option>";
+		            $('#kodeKecamatan').empty(); //remove all child nodes
+		            $.each(data, function(key, value) {
+		                  listItems+= "<option value='" + key + "'>" + value + "</option>";
+		         }); 
+		            $("#kodeKecamatan").html(listItems);
+		        },
+		        
+		        error: function() {
+		            alert('Error occured');
+		        }
+		    });
+		});
+	});		
+    
+</script>
    <script type="text/javascript">
    		$(document).ready(function(){
    			function exportTableToCSV($table, filename) {
@@ -126,39 +174,27 @@
               <div class="row">
 
               <!-- Filter -->
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="#" method="post" th:action="@{/registration}" th:object="${user}">
                   <div class="box-body">
                     <div class="form-group">
                       <label  class="col-sm-1 control-label">Provinsi</label>
                       <div class="col-sm-3">
-                        <select class="form-control">
-                          <option selected="selected">Jawa Barat</option>
-                          <option>Sumatera Utara</option>
-                          <option>Sumatera Barat</option>
-                          <option>Bengkulu</option>
-                          <option>Jambi</option>
-                        </select>
+                     	 <select id="kodePropinsi" class="form-control" th:field="*{kodePropinsi}" name="kodePropinsi" >
+					       <option th:each="prop : ${allPropinsi}" th:value="${prop.kode}" th:text="${prop.name}">Propinsi</option>
+					     </select>
                       </div>
                       
                       <label  class="col-sm-1 control-label">Kabupaten</label>
                       <div class="col-sm-3">
-                        <select class="form-control">
-                          <option selected="selected">Bogor</option>
-                          <option>Sukabumi</option>
-                          <option>Cianjur</option>
-                          <option>Garut</option>
-                          <option>Tasikmalaya</option>
+                        <select id="kodeKabupaten" class="form-control" th:field="*{kodeKabupaten}" name="kodeKabupaten">
+                         
                         </select>
                       </div>
                       
                       <label  class="col-sm-1 control-label">Kecamatan</label>
                       <div class="col-sm-3">
-                        <select class="form-control">
-                          <option selected="selected">Cibinong</option>
-                          <option>Citeurep</option>
-                          <option>Gunung Putri</option>
-                          <option>Jonggol</option>
-                          <option>Cileungsi</option>
+                        <select id="kodeKecamatan" class="form-control" th:field="*{kodeKecamatan}" name="kodeKecamatan">
+                         
                         </select>
                       </div>
                     </div>

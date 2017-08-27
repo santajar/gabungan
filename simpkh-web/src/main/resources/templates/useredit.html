@@ -66,11 +66,11 @@
 
  <div class="container">
  			
- 	<form class="form-horizontal" action="#" method="post" th:action="@{/registration}" th:object="${user}">
+ 	<form class="form-horizontal" method="post" action="#" th:action="@{/edituser}" th:object="${user}">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Form Name</legend>
+<legend>User Edit</legend>
 
 <!-- Text input-->
 <div class="form-group">
@@ -85,7 +85,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Password</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="password" th:field="*{password}" placeholder="Password..." class="form-control input-md">
+  <input id="textinput" name="password" type="password" th:field="*{password}" placeholder="Password..." class="form-control input-md">
    
   </div>
 </div>
@@ -102,11 +102,13 @@
 
 <!-- Select Basic -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="selectbasic" >Provinsi</label>
+  <label class="col-md-4 control-label" for="selectbasic">Provinsi</label>
   <div class="col-md-4">
-    <select id="kodePropinsi" class="form-control" th:field="*{kodePropinsi}" name="kodePropinsi" >
-       <option th:each="prop : ${allPropinsi}" th:value="${prop.kode}" th:text="${prop.name}">Propinsi</option>
+  <select id="kodePropinsi" class="form-control" th:field="*{kodePropinsi}" name="kodePropinsi" >
+       <option selected="selected" th:value="*{kodePropinsi}" th:field="*{kodePropinsi}" name="kodePropinsi"></option>
+     	<option th:each="prop : ${allPropinsi}" th:value="${prop.kode}" th:text="${prop.name}">Propinsi</option>
      </select>
+   
   </div>
 </div>
 
@@ -116,10 +118,10 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectbasic">Kabupaten</label>
   <div class="col-md-4">
-      
       <select id="kodeKabupaten" class="form-control" th:field="*{kodeKabupaten}" name="kodeKabupaten">
+      <option selected="selected" th:value="*{kodeKabupaten}" name="kodeKabupaten">Bogor</option>
       
-     </select>
+    </select>
   </div>
 </div>
 
@@ -127,11 +129,9 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectbasic">Kecamatan</label>
   <div class="col-md-4">
-    
-      <select id="kodeKecamatan" class="form-control" th:field="*{kodeKecamatan}" name="kodeKecamatan">
-      <!--   <option th:each="kec : ${allKecamatan}" th:value="${kec.kode}" th:text="${kec.name}">Propinsi</option>-->
-       
-     </select>
+   <select id="kodeKecamatan" class="form-control" th:field="*{kodeKecamatan}" name="kodeKecamatan">
+      <option selected="selected" th:value="*{kodeKecamatan}" name="kodeKecamatan">Cibinong</option>
+    </select>
   </div>
 </div>
 
@@ -139,36 +139,21 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectbasic">Kelurahan</label>
   <div class="col-md-4">
-    <select class="form-control" name="kodeKelurahan">
-    <!-- 
-       <option selected="selected">Ulujami</option>
-       <option value="1">Petukangan Utara</option>
-       <option value="2">Petukangan Selatan</option>
-       <option value="3">Pesanggrahan</option>
-       <option value="4">Bintaro</option>  -->
+    <select class="form-control">
+       <option selected="selected" th:value="*{kodeKelurahan}" name="kodeKelurahan">Ulujami</option>
        
      </select>
   </div>
 </div>
 
-<!-- Select Basic -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="selectbasic">Account Status</label>
-  <div class="col-md-4">
-    <select id="selectbasic" name="selectbasic" class="form-control">
-      <option value="1">Expired</option>
-      <option value="2">Locked</option>
-    </select>
-  </div>
-</div>
-
+<input id="text" name="id" type="hidden" th:field="*{id}">
+  
 
 <!-- Button -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="singlebutton"></label>
   <div class="col-md-4">
-    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Save</button>
-    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Clear</button>
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Update</button>
   </div>
   
 </div>

@@ -7,6 +7,7 @@ package id.go.kemsos.simpkh.domain.kpm;
 
 import id.go.kemsos.simpkh.domain.enumref.EnumHubunganKeluarga;
 import id.go.kemsos.simpkh.domain.enumref.EnumJenisKelamin;
+import id.go.kemsos.simpkh.domain.enumref.EnumResertifikasiStatus;
 import id.go.kemsos.simpkh.domain.references.KabupatenEntity;
 import id.go.kemsos.simpkh.domain.references.KecamatanEntity;
 import id.go.kemsos.simpkh.domain.references.KelurahanEntity;
@@ -71,35 +72,31 @@ public class KpmResertifikasiEntity implements Serializable{
     @JoinColumn(name = "KDKECA", insertable = false, updatable = false)
     @ManyToOne(fetch = FetchType.EAGER)
     private KecamatanEntity kecamatan;
-    @JoinColumn(name = "KDKELR", insertable = false, updatable = false)
+    @JoinColumn(name = "KDKELR", insertable = false, updatable = false,
+            foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     @ManyToOne(fetch = FetchType.EAGER)
     private KelurahanEntity kelurahan;
     
     @Column(name = "ALAMAT", length = 255)
     private String alamat;
     
-    @JoinColumn(name = "KDPENDAMPING", insertable = false, updatable = false)
+    @JoinColumn(name = "KDPENDAMPING", insertable = false, updatable = false,
+            foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     @ManyToOne(fetch = FetchType.EAGER)
     private PendampingEntity pendamping;
-
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name = "STATUS")
+    private EnumResertifikasiStatus status;
+    
+    @Column(name = "SURVEY", length = 4000)
+    private String survey;
+    
+    @Column(name = "DESCRIPTION", length = 4000)
+    private String desc;
+    
     public KpmResertifikasiEntity() {
-    }
-
-    public KpmResertifikasiEntity(KpmResertifikasiPK id, Integer tahunKepesertaan, String namaPengurus, String namaAnggota, Date tanggalLahir, EnumJenisKelamin jenisKelamin, EnumHubunganKeluarga hubunganKeluarga, String noKK, String nik, PropinsiEntity propinsi, KabupatenEntity kabupaten, KecamatanEntity kecamatan, KelurahanEntity kelurahan, String alamat) {
-        this.id = id;
-        this.tahunKepesertaan = tahunKepesertaan;
-        this.namaPengurus = namaPengurus;
-        this.namaAnggota = namaAnggota;
-        this.tanggalLahir = tanggalLahir;
-        this.jenisKelamin = jenisKelamin;
-        this.hubunganKeluarga = hubunganKeluarga;
-        this.noKK = noKK;
-        this.nik = nik;
-        this.propinsi = propinsi;
-        this.kabupaten = kabupaten;
-        this.kecamatan = kecamatan;
-        this.kelurahan = kelurahan;
-        this.alamat = alamat;
+        this.status = EnumResertifikasiStatus.NEW;
     }
 
     public KpmResertifikasiPK getId() {
@@ -220,6 +217,30 @@ public class KpmResertifikasiEntity implements Serializable{
 
     public void setPendamping(PendampingEntity pendamping) {
         this.pendamping = pendamping;
+    }
+
+    public EnumResertifikasiStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(EnumResertifikasiStatus status) {
+        this.status = status;
+    }
+
+    public String getSurvey() {
+        return survey;
+    }
+
+    public void setSurvey(String survey) {
+        this.survey = survey;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
     
 }

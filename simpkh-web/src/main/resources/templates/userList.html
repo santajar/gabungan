@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Administrator SIMPKH 2017</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <object th:include="template/style:: style" th:remove="tag" />
+  <object th:include="template/jscript:: jscript" th:remove="tag" />
+</head>
+<body >
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <div th:include="template/topmenu :: topmenu"></div>
+<div class="alert alert-danger" th:if="${successMessage}" >
+        <span th:utext="${successMessage}"></span>        
+</div>
+<br>
+  <!-- =============================================== -->
+	 <div class='col-sm-2 col-xs-4 pull-left' >
+            <a href="#" th:href="@{/useradd}" class="btn btn-success" ><i class="glyphicon glyphicon-plus"></i> Create</a>
+        </div>
+		<div class='col-sm-4 col-xs-4 pull-right' >
+			<div class="input-group pull-right">
+				<input type="text" name="cari" id='cari' class="form-control col-sm-5 col-xs-12 input" placeholder="Search Title . . ." onchange='pageLoad(1)'>
+				<div class="input-group-btn">
+					<button class="btn btn-default"><i class="glyphicon glyphicon-search"></i> Search</button>
+				</div>
+			</div>
+		</div>
+ 
+        <h1></h1>
+ 		
+        <br>
+        <div th:if="${not #lists.isEmpty(products)}">
+	        <div class="table-responsive">
+	              <table class="table table-striped">
+	                <thead>
+	                    <tr>
+	                        <th>User</th>
+	                        <th>Nama User</th>
+	                        <th>Propinsi</th>
+	                        <th>Kabupaten</th>
+	                        <th>Kecamatan</th>
+	                        <th >Delete</th>
+	                        <th>Edit</th>
+	                        
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    <tr th:each="user : ${users}">
+	                        <td th:text="${user.username}">user</td>
+	                        <td th:text="${user.fullName}">Nama User</td>
+	                        <td th:text="${user.kodePropinsi}">Kode Propinsi</td>
+	                        <td th:text="${user.kodeKabupaten}">Kode Kabupaten</td>
+	                        <td th:text="${user.kodeKecamatan}">Kode Kecamatan</td>
+	                        <td ><a th:href="@{/userdelete/{id}(id=${user.id})}">Delete</a></td>
+	                        <td ><a th:href="@{/useredit/{id}(id=${user.id})}">Edit</a></td>
+	                    </tr>
+	                </tbody>
+	              </table>
+	              
+	            </div>
+            </div>
+		<!-- Pagination Bar -->
+    <div th:fragment='paginationbar'>
+        <div>
+            <ul class='pagination pagination-centered'>
+                <li th:class="${page.firstPage}?'disabled':''">
+                <span th:if='${page.firstPage}'>First</span>
+                <a th:if='${not page.firstPage}' th:href='@{${page.url}(page=0,size=${page.size})}'>First</a>
+                </li>
+                <li th:class="${page.hasPreviousPage}? '' : 'disabled'">
+                <span th:if='${not page.hasPreviousPage}'><<</span>
+                <a th:if='${page.hasPreviousPage}' th:href='@{${page.url}(page=${page.number-2},size=${page.size})}' title='Go to previous page'><<</a>
+                </li>
+                <li th:each='item : ${page.items}' th:class="${item.current}? 'active' : ''">
+                <span th:if='${item.current}' th:text='${item.number}'>1</span>
+                <a th:if='${not item.current}' th:href='@{${page.url}(page=${item.number-1},size=${page.size})}'><span th:text='${item.number}'>1</span></a>
+                </li>
+                <li th:class="${page.hasNextPage}? '' : 'disabled'">
+                <span th:if='${not page.hasNextPage}'>>></span>
+                <a th:if='${page.hasNextPage}' th:href='@{${page.url}(page=${page.number},size=${page.size})}' title='Go to next page'>>></a>
+                </li>
+                <li th:class="${page.lastPage}? 'disabled' : ''">
+                <span th:if='${page.lastPage}'>Last</span>
+                <a th:if='${not page.lastPage}' th:href='@{${page.url}(page=${page.totalPages - 1},size=${page.size})}'>Last</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+  <div th:include="template/footer :: footer"/>
+
+</div>
+<!-- ./wrapper -->
+
+</body>
+</html>

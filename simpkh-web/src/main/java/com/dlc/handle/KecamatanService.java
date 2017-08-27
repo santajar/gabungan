@@ -8,8 +8,8 @@ import id.go.kemsos.simpkh.domain.references.repository.JpaKecamatanRepository;
 @Service
 public class KecamatanService {
 	
-	@Autowired
-	private JpaKecamatanRepository jpaKecamatanRepository;
+//	@Autowired
+//	private JpaKecamatanRepository jpaKecamatanRepository;
 
 	public KecamatanService() {
 		// TODO Auto-generated constructor stub
