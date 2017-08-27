@@ -66,7 +66,11 @@
 
  <div class="container">
  			
+<<<<<<< HEAD
  	<form class="form-horizontal" action="#" method="post" th:action="@{/registration}" th:object="${user}">
+=======
+ 	<form class="form-horizontal" action="#" th:action="@{/registration}" th:object="${user}">
+>>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
 <fieldset>
 
 <!-- Form Name -->
@@ -104,7 +108,11 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectbasic" >Provinsi</label>
   <div class="col-md-4">
+<<<<<<< HEAD
     <select id="kodePropinsi" class="form-control" th:field="*{kodePropinsi}" name="kodePropinsi" >
+=======
+    <select class="form-control" th:field="*{kodePropinsi}">
+>>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
        <option th:each="prop : ${allPropinsi}" th:value="${prop.kode}" th:text="${prop.name}">Propinsi</option>
      </select>
   </div>
@@ -116,9 +124,20 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectbasic">Kabupaten</label>
   <div class="col-md-4">
+<<<<<<< HEAD
       
       <select id="kodeKabupaten" class="form-control" th:field="*{kodeKabupaten}" name="kodeKabupaten">
       
+=======
+    <select class="form-control">
+    <!-- 
+       <option selected="selected">Ulujami</option>
+       <option value="1">Petukangan Utara</option>
+       <option value="2">Petukangan Selatan</option>
+       <option value="3">Pesanggrahan</option>
+       <option value="4">Bintaro</option>  -->
+       
+>>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
      </select>
   </div>
 </div>
@@ -127,11 +146,24 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectbasic">Kecamatan</label>
   <div class="col-md-4">
+<<<<<<< HEAD
     
       <select id="kodeKecamatan" class="form-control" th:field="*{kodeKecamatan}" name="kodeKecamatan">
       <!--   <option th:each="kec : ${allKecamatan}" th:value="${kec.kode}" th:text="${kec.name}">Propinsi</option>-->
        
      </select>
+=======
+    <select class="form-control">
+    <!-- 
+      <option selected="selected">Bogor</option>
+      <option value="1">Sukabumi</option>
+      <option value="2">Cianjur</option>
+      <option value="3">Garut</option>
+      <option value="4">Tasikmalaya</option>  -->
+      <option th:each="kab : ${allKabupaten}" 
+      	th:if="${kab.propinsi.kode == prop.kode}" th:value="${kab.kode}" th:text="${kab.name}">Kabupaten</option>
+    </select>
+>>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
   </div>
 </div>
 

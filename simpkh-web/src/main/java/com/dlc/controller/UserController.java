@@ -1,6 +1,7 @@
 package com.dlc.controller;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +31,20 @@ import com.dlc.util.PageWrapper;
 import id.go.kemsos.simpkh.domain.acl.User;
 import id.go.kemsos.simpkh.domain.references.KabupatenEntity;
 import id.go.kemsos.simpkh.domain.references.KecamatanEntity;
+=======
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.dlc.service.KabupatenServiceInterface;
+import com.dlc.service.PropinsiServiceInterface;
+import com.dlc.service.UserService;
+
+import id.go.kemsos.simpkh.domain.acl.User;
+import id.go.kemsos.simpkh.domain.references.KabupatenEntity;
+>>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
 import id.go.kemsos.simpkh.domain.references.PropinsiEntity;
 
 @Controller
@@ -42,6 +57,7 @@ public class UserController {
 	PropinsiServiceInterface propinsiServiceInterface;
 	
 	@Autowired
+<<<<<<< HEAD
 	KecamatanServiceInterface kecamatanRepository;
 	
 	@Autowired
@@ -54,6 +70,10 @@ public class UserController {
     private UserRepository userRepository;
 
 	
+=======
+	KabupatenServiceInterface kabupatenServiceInterface;
+	
+>>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
 	
 //	public ModelAndView
 	@GetMapping("/useradd")
@@ -64,6 +84,7 @@ public class UserController {
 		modelAndView.addObject("allPropinsi", (ArrayList<PropinsiEntity>) propinsiServiceInterface.getAllPropinsi());
 		modelAndView.addObject("kab", new KabupatenEntity());
 		modelAndView.addObject("allKabupaten", (ArrayList<KabupatenEntity>) kabupatenServiceInterface.getAllKabupaten());
+<<<<<<< HEAD
 		modelAndView.addObject("allKecamatan", (ArrayList<KecamatanEntity>) kecamatanRepository.getAllKecamatan());
 		modelAndView.addObject("kec", new KecamatanEntity());
 		modelAndView.setViewName("user");
@@ -160,4 +181,9 @@ public class UserController {
 
 	        return cityValues;  
 	    }
+=======
+		modelAndView.setViewName("user");
+		return modelAndView;
+	}
+>>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
 }

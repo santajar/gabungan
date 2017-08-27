@@ -34,6 +34,7 @@
         <h1></h1>
  		
         <br>
+<<<<<<< HEAD
         <div th:if="${not #lists.isEmpty(products)}">
 	        <div class="table-responsive">
 	              <table class="table table-striped">
@@ -91,6 +92,34 @@
             </ul>
         </div>
     </div>
+=======
+        <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Nama User</th>
+                        <th>kode Kabupaten</th>
+                        <th>Kode Kecamatan</th>
+                        <th >Delete</th>
+                        <th>Edit</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.username}">user</td>
+                        <td th:text="${user.fullName}">Nama User</td>
+                        <td th:text="${user.kodeKabupaten}">Kode Kabupaten</td>
+                        <td th:text="${user.kodeKecamatan}">Kode Kecamatan</td>
+                        <td ><a th:href="@{/userdelete/{id}(id=${user.id})}">Delete</a></td>
+                        <td ><a th:href="@{/useredit/{id}(id=${user.id})}">Edit</a></td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+
+>>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
   <div th:include="template/footer :: footer"/>
 
 </div>

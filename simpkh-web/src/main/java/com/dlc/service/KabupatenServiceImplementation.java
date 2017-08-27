@@ -2,7 +2,10 @@ package com.dlc.service;
 
 
 import java.util.Collection;
+<<<<<<< HEAD
 import java.util.List;
+=======
+>>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
 
 import javax.transaction.Transactional;
 
@@ -35,6 +38,7 @@ public class KabupatenServiceImplementation implements KabupatenServiceInterface
 
 
 	@Override
+<<<<<<< HEAD
 	public List<KabupatenEntity> findById(Integer kode) {
 		// TODO Auto-generated method stub
 //		kabupatenRepository.FindAllWithDescriptionQuery
@@ -45,6 +49,12 @@ public class KabupatenServiceImplementation implements KabupatenServiceInterface
 
 
 	
+=======
+	public KabupatenEntity findById(Integer kode) {
+		// TODO Auto-generated method stub
+		return kabupatenRepository.findOne(kode);
+	}
+>>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
 	
 
 }

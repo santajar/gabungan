@@ -44,6 +44,7 @@ public class UserServiceImpl implements UserService {
 		userRepository.delete(user);
 	}
 
+<<<<<<< HEAD
 	@Override
 	public Page<User> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
@@ -51,6 +52,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 
+=======
+>>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
 	
 	
 }
