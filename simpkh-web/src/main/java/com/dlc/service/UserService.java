@@ -11,8 +11,5 @@ public interface UserService {
 
     User findByUsername(String username);
     User findByID(Long id);
-<<<<<<< HEAD
     Page<User> findAll(Pageable pageable);
-=======
->>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
 }

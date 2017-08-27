@@ -6,7 +6,6 @@
   <title>Administrator SIMPKH 2017</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<<<<<<< HEAD
   <object th:include="template/style:: style" th:remove="tag" ></object>
   <object th:include="template/jscript:: jscript" th:remove="tag" ></object>
   <script th:inline="javascript">
@@ -57,10 +56,6 @@
 	});		
     
 </script>
-=======
-  <object th:include="template/style:: style" th:remove="tag" />
-  <object th:include="template/jscript:: jscript" th:remove="tag" />
->>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
@@ -71,11 +66,7 @@
 
  <div class="container">
  			
-<<<<<<< HEAD
  	<form class="form-horizontal" method="post" action="#" th:action="@{/edituser}" th:object="${user}">
-=======
- 	<form class="form-horizontal" action="#" th:action="@{/edituser}" th:object="${user}">
->>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
 <fieldset>
 
 <!-- Form Name -->
@@ -113,7 +104,6 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectbasic">Provinsi</label>
   <div class="col-md-4">
-<<<<<<< HEAD
   <select id="kodePropinsi" class="form-control" th:field="*{kodePropinsi}" name="kodePropinsi" >
        <option selected="selected" th:value="*{kodePropinsi}" th:field="*{kodePropinsi}" name="kodePropinsi"></option>
      	<option th:each="prop : ${allPropinsi}" th:value="${prop.kode}" th:text="${prop.name}">Propinsi</option>
@@ -132,73 +122,27 @@
       <option selected="selected" th:value="*{kodeKabupaten}" name="kodeKabupaten">Bogor</option>
       
     </select>
-=======
-    <select class="form-control">
-       <option selected="selected" th:value="*{kodePropinsi}" name="kodePropinsi">Jawa Barat</option>
-       <option value="1">Sumatera Utara</option>
-       <option value="2">Sumatera Barat</option>
-       <option value="3">Bengkulu</option>
-       <option value="4">Jambi</option>
-     </select>
   </div>
 </div>
 
 <!-- Select Basic -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="selectbasic">Kelurahan</label>
-  <div class="col-md-4">
-    <select class="form-control">
-       <option selected="selected" th:value="*{kodeKelurahan}" name="kodeKelurahan">Ulujami</option>
-       <option value="1">Petukangan Utara</option>
-       <option value="2">Petukangan Selatan</option>
-       <option value="3">Pesanggrahan</option>
-       <option value="4">Bintaro</option>
-     </select>
->>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
-  </div>
-</div>
-
-<!-- Select Basic -->
-<div class="form-group">
-<<<<<<< HEAD
   <label class="col-md-4 control-label" for="selectbasic">Kecamatan</label>
   <div class="col-md-4">
    <select id="kodeKecamatan" class="form-control" th:field="*{kodeKecamatan}" name="kodeKecamatan">
       <option selected="selected" th:value="*{kodeKecamatan}" name="kodeKecamatan">Cibinong</option>
-=======
-  <label class="col-md-4 control-label" for="selectbasic">Kabupaten</label>
-  <div class="col-md-4">
-    <select class="form-control">
-      <option selected="selected" th:value="*{kodeKabupaten}" name="kodeKabupaten">Bogor</option>
-      <option value="1">Sukabumi</option>
-      <option value="2">Cianjur</option>
-      <option value="3">Garut</option>
-      <option value="4">Tasikmalaya</option>
->>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
     </select>
   </div>
 </div>
 
 <!-- Select Basic -->
 <div class="form-group">
-<<<<<<< HEAD
   <label class="col-md-4 control-label" for="selectbasic">Kelurahan</label>
   <div class="col-md-4">
     <select class="form-control">
        <option selected="selected" th:value="*{kodeKelurahan}" name="kodeKelurahan">Ulujami</option>
        
      </select>
-=======
-  <label class="col-md-4 control-label" for="selectbasic">Kecamatan</label>
-  <div class="col-md-4">
-    <select class="form-control" >
-      <option selected="selected" th:value="*{kodeKecamatan}" name="kodeKecamatan">Cibinong</option>
-      <option value="1">Citeurep</option>
-      <option value="2">Gunung Putri</option>
-      <option value="3">Jonggol</option>
-      <option value="4">Cileungsi</option>
-    </select>
->>>>>>> 1cfa692fb81104205b06934495e2a542ccabc6b4
   </div>
 </div>
 
