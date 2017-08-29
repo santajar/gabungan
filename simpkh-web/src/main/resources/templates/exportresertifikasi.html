@@ -64,7 +64,26 @@
 		    });
 		});
 	});		
-    
+    $('#bcari').click(function(){
+    	$.ajax({
+	        type:"GET",
+	        url : "/getExport",
+	     /*   data : { prov: $('#kodePropinsi').val(),
+	        	kab: $('#kodeKabupaten').val(),
+	        	kec: $('#kodeKecamatan').val(),
+	        	pdp: $('#pendamping').val(),
+	        	status: $('#status').val()
+	        	},*/
+	        
+	        success : function(data) {
+	        	alert(data);
+	        },
+	        
+	        error: function() {
+	            alert('Error occured');
+	        }
+	    });
+    });
 </script>
    <script type="text/javascript">
    		$(document).ready(function(){
@@ -202,7 +221,7 @@
                     <div class="form-group">
                       <label  class="col-sm-1 control-label">Pendamping</label>
                       <div class="col-sm-3">
-                        <select class="form-control">
+                        <select class="form-control" id="pendamping">
                           <option selected="selected">Kurniawan</option>
                           <option>Susilowati</option>
                           <option>Maria</option>
@@ -213,7 +232,7 @@
 
                       <label for="input" class="col-sm-1 control-label">Status</label>
                       <div class="col-sm-3">
-                        <select class="form-control">
+                        <select class="form-control" id="status">
                           <option selected="selected">All</option>
                           <option>Entry</option>
                           <option>Empty</option>
@@ -223,7 +242,7 @@
 
                     <div class="form-group">
                       <div class="col-sm-3 col-sm-offset-1">
-                        <button class="btn btn-default" type="button">Cari</button>
+                        <button class="btn btn-default" type="button" id="bcari">Cari</button>
                         <!-- <button class="btn btn-default" type="button" id="export">Export Data</button>  -->
                         <a href="#" class="export">Export to csv</a> 
                       </div>
@@ -236,7 +255,7 @@
             </div>
             
             <!-- /.box-header -->
-            <div class="box-body" id="dvData">
+            <div class="box-body" th:fragment="resultsList" id="dvData">
               <table id="example2" class="table table-bordered table-striped">
                 <thead>
                   <tr>
