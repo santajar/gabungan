@@ -8,8 +8,9 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 public interface TKPMRepository extends JpaRepository<KpmResertifikasiEntity, Integer>,JpaSpecificationExecutor<KpmResertifikasiEntity>{
-	@Query(value ="select a.nomorPeserta, count(a.nomorPeserta) as jmlkel, a.alamat, a.tahunKepesertaan, b.nmpendamping "
-			+ "from t_kpm_resertifikasi a inner join m_pendamping b on a.kdpendamping = b.kdpendamping "
-			+ "group by nomorPeserta, a.alamat, a.tahunKepesertaan, pendamping", nativeQuery = true)
-	public List<KpmResertifikasiEntity> findAll();
+//	@Query(value ="select a.id.nomorPeserta, count(a.id.nomorPeserta) as jmlkel, a.alamat, a.tahunKepesertaan, b.nmpendamping "
+//			+ "from KpmResertifikasiEntity a inner join KpmResertifikasiEntity.pendamping b on a.kdpendamping = b.kdpendamping "
+//			+ "group by nomorPeserta, a.alamat, a.tahunKepesertaan, nmpendamping", nativeQuery = false)
+	@Query(value="select nopeserta, count(nopeserta) as jkel from t_kpm_resertifikasi group by nopeserta", nativeQuery = true)
+	public List<Object[]> getCustomCount();
 }

@@ -16,10 +16,12 @@ import com.dlc.service.KabupatenServiceInterface;
 import com.dlc.service.KecamatanServiceInterface;
 import com.dlc.service.PendampingServiceInterface;
 import com.dlc.service.PropinsiServiceInterface;
+import com.dlc.service.TKPMServiceInterface;
 import com.dlc.service.UserService;
 import com.dlc.util.HibernateUtil;
 
 import id.go.kemsos.simpkh.domain.acl.User;
+import id.go.kemsos.simpkh.domain.kpm.KpmResertifikasiEntity;
 import id.go.kemsos.simpkh.domain.kpm.PendampingEntity;
 import id.go.kemsos.simpkh.domain.references.KabupatenEntity;
 import id.go.kemsos.simpkh.domain.references.KecamatanEntity;
@@ -46,6 +48,9 @@ public class ExportController {
 	@Autowired
 	KecamatanServiceInterface kecamatanServiceInterface;
     
+	@Autowired
+	TKPMServiceInterface tkpmservice;
+	
 	@GetMapping("/export")
 	public ModelAndView export(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -56,8 +61,8 @@ public class ExportController {
 		modelAndView.addObject("allKabupaten", (ArrayList<KabupatenEntity>) kabupatenServiceInterface.getAllKabupaten());
 		modelAndView.addObject("allKecamatan", (ArrayList<KecamatanEntity>) kecamatanRepository.getAllKecamatan());
 		modelAndView.addObject("kec", new KecamatanEntity());
-		modelAndView.addObject("allPendamping", (ArrayList<PendampingEntity>) pendampingServiceInterface.getAllpendamping());
-		modelAndView.addObject("pend", new PendampingEntity());
+//		modelAndView.addObject("allPendamping", (ArrayList<PendampingEntity>) pendampingServiceInterface.getAllpendamping());
+//		modelAndView.addObject("pend", new PendampingEntity());
 		modelAndView.setViewName("exportresertifikasi");
 		return modelAndView;
 	}
@@ -68,9 +73,9 @@ public class ExportController {
 //				+ "from t_kpm_resertifikasi a inner join m_pendamping b on a.kdpendamping = b.kdpendamping "
 //				+ "group by nopeserta, a.alamat, a.tahunkepesertaan, nmpendamping";
 //		Query query = session.createQuery(sql);
-		List<Object[]> list = null;
+		List<Object[]> list = tkpmservice.findAll();
 		for(Object[] arr : list){
-			System.out.println(Arrays.toString(arr));
+			System.out.println(Arrays.asList(arr));
 		}
 		return new ModelAndView("exportresertifikasi :: resultsList");
 	}
