@@ -28,7 +28,7 @@
 		        url : "/getKabupatenValues",
 		        data : { state: $('#kodePropinsi').val()},
 		        success : function(data) {
-		        	var listItems= "";
+		        	var listItems= "<option value=''></option>";
 		            $('#kodeKabupaten').empty(); //remove all child nodes
 		            $.each(data, function(key, value) {
 		            	console.log(value);
