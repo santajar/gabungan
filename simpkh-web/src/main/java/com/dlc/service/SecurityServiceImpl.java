@@ -35,7 +35,12 @@ public class SecurityServiceImpl implements SecurityService{
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 
-        authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+        try {
+        	authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.debug(e.getMessage());
+		}
 
         if (usernamePasswordAuthenticationToken.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);

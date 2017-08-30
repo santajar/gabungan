@@ -13,11 +13,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dlc.service.KabupatenServiceInterface;
 import com.dlc.service.KecamatanServiceInterface;
+import com.dlc.service.PendampingServiceInterface;
 import com.dlc.service.PropinsiServiceInterface;
 import com.dlc.service.UserService;
 import com.dlc.util.HibernateUtil;
 
 import id.go.kemsos.simpkh.domain.acl.User;
+import id.go.kemsos.simpkh.domain.kpm.PendampingEntity;
 import id.go.kemsos.simpkh.domain.references.KabupatenEntity;
 import id.go.kemsos.simpkh.domain.references.KecamatanEntity;
 import id.go.kemsos.simpkh.domain.references.PropinsiEntity;
@@ -30,6 +32,9 @@ public class ExportController {
 	
 	@Autowired
 	PropinsiServiceInterface propinsiServiceInterface;
+	
+	@Autowired
+	PendampingServiceInterface pendampingServiceInterface;
 	
 	@Autowired
 	KecamatanServiceInterface kecamatanRepository;
@@ -51,6 +56,8 @@ public class ExportController {
 		modelAndView.addObject("allKabupaten", (ArrayList<KabupatenEntity>) kabupatenServiceInterface.getAllKabupaten());
 		modelAndView.addObject("allKecamatan", (ArrayList<KecamatanEntity>) kecamatanRepository.getAllKecamatan());
 		modelAndView.addObject("kec", new KecamatanEntity());
+		modelAndView.addObject("allPendamping", (ArrayList<PendampingEntity>) pendampingServiceInterface.getAllpendamping());
+		modelAndView.addObject("pend", new PendampingEntity());
 		modelAndView.setViewName("exportresertifikasi");
 		return modelAndView;
 	}

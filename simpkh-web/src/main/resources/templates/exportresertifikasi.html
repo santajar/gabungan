@@ -220,14 +220,10 @@
 
                     <div class="form-group">
                       <label  class="col-sm-1 control-label">Pendamping</label>
-                      <div class="col-sm-3">
-                        <select class="form-control" id="pendamping">
-                          <option selected="selected">Kurniawan</option>
-                          <option>Susilowati</option>
-                          <option>Maria</option>
-                          <option>Qomarudin</option>
-                          <option>Anjarsari</option>
-                        </select>
+                     <div class="col-sm-3">
+                     	 <select id="kodePendamping" class="form-control" name="kdpendamping" >
+					       <option th:each="pend : ${allPendamping}" th:value="${pend.kdpendamping}" th:text="${pend.nmpendamping}">Propinsi</option>
+					     </select>
                       </div>
 
                       <label for="input" class="col-sm-1 control-label">Status</label>
