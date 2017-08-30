@@ -11,6 +11,6 @@ public interface TKPMRepository extends JpaRepository<KpmResertifikasiEntity, In
 //	@Query(value ="select a.id.nomorPeserta, count(a.id.nomorPeserta) as jmlkel, a.alamat, a.tahunKepesertaan, b.nmpendamping "
 //			+ "from KpmResertifikasiEntity a inner join KpmResertifikasiEntity.pendamping b on a.kdpendamping = b.kdpendamping "
 //			+ "group by nomorPeserta, a.alamat, a.tahunKepesertaan, nmpendamping", nativeQuery = false)
-	@Query(value="select nopeserta, count(nopeserta) as jkel from t_kpm_resertifikasi group by nopeserta", nativeQuery = true)
+	@Query(value="select nopeserta, namaart, count(nopeserta) as jkel from t_kpm_resertifikasi group by nopeserta", nativeQuery = true)
 	public List<Object[]> getCustomCount();
 }
