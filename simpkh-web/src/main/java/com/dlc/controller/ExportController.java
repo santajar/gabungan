@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dlc.repository.TKPMRepository;
 import com.dlc.service.KabupatenServiceInterface;
 import com.dlc.service.KecamatanServiceInterface;
 import com.dlc.service.PendampingServiceInterface;
@@ -45,7 +46,6 @@ public class ExportController {
 	@Autowired
 	KecamatanServiceInterface kecamatanServiceInterface;
     
-
 	@GetMapping("/export")
 	public ModelAndView export(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -63,12 +63,12 @@ public class ExportController {
 	}
 	@GetMapping("/getExport")
 	public ModelAndView getExportdata(){
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		String sql = "select a.nopeserta, count(a.nopeserta) as jmlkel, a.alamat, a.tahunkepesertaan, b.nmpendamping "
-				+ "from t_kpm_resertifikasi a inner join m_pendamping b on a.kdpendamping = b.kdpendamping "
-				+ "group by nopeserta, a.alamat, a.tahunkepesertaan, nmpendamping";
-		Query query = session.createQuery(sql);
-		List<Object[]> list = query.list();
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		String sql = "select a.nopeserta, count(a.nopeserta) as jmlkel, a.alamat, a.tahunkepesertaan, b.nmpendamping "
+//				+ "from t_kpm_resertifikasi a inner join m_pendamping b on a.kdpendamping = b.kdpendamping "
+//				+ "group by nopeserta, a.alamat, a.tahunkepesertaan, nmpendamping";
+//		Query query = session.createQuery(sql);
+		List<Object[]> list = null;
 		for(Object[] arr : list){
 			System.out.println(Arrays.toString(arr));
 		}
