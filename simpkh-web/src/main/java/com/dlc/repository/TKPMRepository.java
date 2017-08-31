@@ -8,9 +8,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 public interface TKPMRepository extends JpaRepository<KpmResertifikasiEntity, Integer>,JpaSpecificationExecutor<KpmResertifikasiEntity>{
-//	@Query(value ="select a.id.nomorPeserta, count(a.id.nomorPeserta) as jmlkel, a.alamat, a.tahunKepesertaan, b.nmpendamping "
-//			+ "from KpmResertifikasiEntity a inner join KpmResertifikasiEntity.pendamping b on a.kdpendamping = b.kdpendamping "
-//			+ "group by nomorPeserta, a.alamat, a.tahunKepesertaan, nmpendamping", nativeQuery = false)
 	@Query(value="select a.nopeserta, a.namaart,a.kab_name,"
 			+ "b.jkel,a.tahunkepesertaan,a.nmpendamping "
 			+ "from (select c.nopeserta,c.namaart,d.kab_name,c.tahunkepesertaan,e.nmpendamping "

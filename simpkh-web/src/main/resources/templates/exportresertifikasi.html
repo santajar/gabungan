@@ -9,7 +9,7 @@
   <object th:include="template/style:: style" th:remove="tag" ></object>
   <object th:include="template/jscript:: jscript" th:remove="tag" ></object>
    <style type="text/css">
-   	a.export, a.export:visited {
+   	a.export, a.export:visited, a.cari, a.cari:visited {
  	   display: inline-block;
     	text-decoration: none;
     	color:#000;
@@ -64,26 +64,7 @@
 		    });
 		});
 	});		
-    $('#bcari').click(function(){
-    	$.ajax({
-	        type:"GET",
-	        url : "/getExport",
-	     /*   data : { prov: $('#kodePropinsi').val(),
-	        	kab: $('#kodeKabupaten').val(),
-	        	kec: $('#kodeKecamatan').val(),
-	        	pdp: $('#pendamping').val(),
-	        	status: $('#status').val()
-	        	},*/
-	        
-	        success : function(data) {
-	        	alert(data);
-	        },
-	        
-	        error: function() {
-	            alert('Error occured');
-	        }
-	    });
-    });
+    
 </script>
    <script type="text/javascript">
    		$(document).ready(function(){
@@ -159,6 +140,22 @@
  		       
  		       exportTableToCSV.apply(this, args);
  		   });
+   			$(".cari").on('click',function(event){
+   		    	$.ajax({
+   			        type:"GET",
+   			        url : "/getExport",
+   			        data : {},
+   			        success : function(data) {
+   			        	//alert(data);
+   			        	$("#dvData").html(data);
+   			        },
+   			        
+   			        error: function() {
+   			            alert('Error occured');
+   			        }
+   			    });
+   			    //alert('masuk');
+   		    });
    		});
 		   
    </script>
@@ -238,8 +235,9 @@
 
                     <div class="form-group">
                       <div class="col-sm-3 col-sm-offset-1">
-                        <button class="btn btn-default" type="button" id="bcari">Cari</button>
-                        <!-- <button class="btn btn-default" type="button" id="export">Export Data</button>  -->
+                     <!--   <button class="btn btn-default" type="button" id="bcari">Cari</button>
+                         <button class="btn btn-default" type="button" id="export">Export Data</button>  -->
+                         <a href="#" class="cari">Cari</a>
                         <a href="#" class="export">Export to csv</a> 
                       </div>
                     </div>
@@ -264,63 +262,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1112341234567890</td>
-                    <td>Khodir</td>
-                    <td>Aceh Besar</td>
-                    <td>6</td>
-                    <td>2010</td>
-                    <td>Kurniawan</td>
-                  </tr>
-                  <tr>
-                    <td>1112341234567890</td>
-                    <td>Khodir</td>
-                    <td>Aceh Besar</td>
-                    <td>6</td>
-                    <td>2010</td>
-                    <td>Kurniawan</td>
-                  </tr>
-                  <tr>
-                    <td>1112341234567890</td>
-                    <td>Khodir</td>
-                    <td>Aceh Besar</td>
-                    <td>6</td>
-                    <td>2010</td>
-                    <td>Kurniawan</td>
-                  </tr>
-                  <tr>
-                    <td>1112341234567890</td>
-                    <td>Khodir</td>
-                    <td>Aceh Besar</td>
-                    <td>6</td>
-                    <td>2010</td>
-                    <td>Kurniawan</td>
-                  </tr>
-                  <tr>
-                    <td>1112341234567890</td>
-                    <td>Khodir</td>
-                    <td>Aceh Besar</td>
-                    <td>6</td>
-                    <td>2010</td>
-                    <td>Kurniawan</td>
-                  </tr>
-                  <tr>
-                    <td>1112341234567890</td>
-                    <td>Khodir</td>
-                    <td>Aceh Besar</td>
-                    <td>6</td>
-                    <td>2010</td>
-                    <td>Kurniawan</td>
-                  </tr>
-                  <tr>
-                    <td>1112341234567890</td>
-                    <td>Khodir</td>
-                    <td>Aceh Besar</td>
-                    <td>6</td>
-                    <td>2010</td>
-                    <td>Kurniawan</td>
-                  </tr>
-                  
+                	<tr th:each="data:${list}">
+                		<td th:text="${data[0]}"></td>
+                		<td th:text="${data[1]}"></td>
+                		<td th:text="${data[2]}"></td>
+                		<td th:text="${data[3]}"></td>
+                		<td th:text="${data[4]}"></td>
+                		<td th:text="${data[5]}"></td>
+                	</tr>
                 </tbody>
               </table>
             </div>

@@ -68,16 +68,14 @@ public class ExportController {
 	}
 	@GetMapping("/getExport")
 	public ModelAndView getExportdata(){
-//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-//		String sql = "select a.nopeserta, count(a.nopeserta) as jmlkel, a.alamat, a.tahunkepesertaan, b.nmpendamping "
-//				+ "from t_kpm_resertifikasi a inner join m_pendamping b on a.kdpendamping = b.kdpendamping "
-//				+ "group by nopeserta, a.alamat, a.tahunkepesertaan, nmpendamping";
-//		Query query = session.createQuery(sql);
+		ModelAndView modelAndView = new ModelAndView();
 		List<Object[]> list = tkpmservice.findAll();
 		for(Object[] arr : list){
 			System.out.println(Arrays.asList(arr));
 		}
-		return new ModelAndView("exportresertifikasi :: resultsList");
+		modelAndView.addObject("list", list);
+		modelAndView.setViewName("exportresertifikasi :: resultsList");
+		return modelAndView;
 	}
 	
 }
