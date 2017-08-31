@@ -1,8 +1,11 @@
 package com.dlc.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -78,4 +81,14 @@ public class ExportController {
 		return modelAndView;
 	}
 	
+	@GetMapping(value = "/export/export.csv")
+	public void exportCSV(HttpServletResponse response) {         
+	    try {
+	    	response.setContentType("text/plain; charset=utf-8");
+			response.getWriter().print("a,b,c\n1,2,3\n3,4,5");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
