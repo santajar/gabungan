@@ -23,10 +23,17 @@ public class TKPMServiceImplementation implements TKPMServiceInterface{
 	@Autowired
 	protected TKPMRepository tkpmrepository;
 
+//	@Override
+//	public List<Object[]> findAll() {
+//		// TODO Auto-generated method stub
+//		Iterable<Object[]> itr = tkpmrepository.getCustomCount();
+//		return (List<Object[]>) itr;
+//	}
+
 	@Override
-	public List<Object[]> findAll() {
+	public List<Object[]> findAll(Integer prov, Integer kab, Integer kec) {
 		// TODO Auto-generated method stub
-		Iterable<Object[]> itr = tkpmrepository.getCustomCount();
+		Iterable<Object[]> itr = tkpmrepository.getCustomCount(prov, kab, kec);
 		return (List<Object[]>) itr;
 	}
 

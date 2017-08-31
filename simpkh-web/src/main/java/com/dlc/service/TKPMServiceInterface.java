@@ -15,6 +15,6 @@ public interface TKPMServiceInterface {
 //	@Query(value ="select a.nomorPeserta, count(a.nomorPeserta) as jmlkel, a.alamat, a.tahunKepesertaan, b.nmpendamping "
 //			+ "from KpmResertifikasiEntity a inner join PendampingEntity b on a.kdpendamping = b.kdpendamping "
 //			+ "group by nomorPeserta, a.alamat, a.tahunKepesertaan, pendamping", nativeQuery = false)
-	public List<Object[]> findAll();
+	public List<Object[]> findAll(Integer prov,Integer kab, Integer kec);
 //	public Collection<KpmResertifikasiEntity> getAll();
 }

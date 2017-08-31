@@ -154,7 +154,9 @@
    		    	$.ajax({
    			        type:"GET",
    			        url : "/getExport",
-   			        data : {},
+   			        data : {prov:$('#kodePropinsi').val(),
+   			        	kab:$('#kodeKabupaten').val(),
+   			        	kec:$("#kodeKecamatan").val()},
    			        success : function(data) {
    			        	//alert(data);
    			        	$("#dvData").html(data);
