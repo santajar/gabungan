@@ -100,8 +100,8 @@
 
    						// Deliberate 'false', see comment below
    		        if (false && window.navigator.msSaveBlob) {
-
-   								var blob = new Blob([decodeURIComponent(csv)], {
+						alert(csv);
+   						var blob = new Blob([decodeURIComponent(csv)], {
    			              type: 'text/csv;charset=utf8'
    		            });
    		            
@@ -113,9 +113,10 @@
    		            window.navigator.msSaveBlob(blob, filename);
    		            
    		        } else if (window.Blob && window.URL) {
-   								// HTML5 Blob        
+   								// HTML5 Blob 
    		            var blob = new Blob([csv], { type: 'text/csv;charset=utf8' });
    		            var csvUrl = URL.createObjectURL(blob);
+   		            alert('url' + csvUrl)
 
    		            $(this)
    		            		.attr({
@@ -137,18 +138,15 @@
    			$(".export").on('click', function (event) {
  		       // CSV
  		       //var args = [$('#dvData>table'), 'export.csv'];
- 		       //var args = [$('#example2'), 'export.csv'];
+ 		      // var args = [$('#example2'), 'export.csv'];
  		       //exportTableToCSV.apply(this, args);
- 		       $.ajax({
- 		    	   type:"GET",
- 		    	   url:"/export/export.csv",
- 		    	   success:function(data){
- 		    		   alert(data);
- 		    	   },
- 		    	   error:function() {
-  			            alert('Error occured');
-  			        }
- 		       });
+ 		      window.location.href = '/export/' + $('#kodePropinsi').val() + '/' 
+ 		      					+ $('#kodeKabupaten').val() + '/'
+ 		      					+ $("#kodeKecamatan").val() + '/'
+ 		      					+ $("#kodePendamping").val() + '/'
+ 		      					+ $("#status").val() + '/'
+ 		      					+ 'export.csv';
+ 		      					
  		   });
    			$(".cari").on('click',function(event){
    		    	$.ajax({
@@ -177,7 +175,6 @@
    			            alert('Error occured');
    			        }
    			    });
-   			    //alert('masuk');
    		    });
    		});
 		   

@@ -1,9 +1,15 @@
 package com.dlc.controller;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,6 +19,7 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -98,16 +105,40 @@ public class ExportController {
 		return modelAndView;
 	}
 	
-	@GetMapping(value = "/export/export.csv")
-	public void exportCSV(HttpServletResponse response) {         
+	@GetMapping(value = "/export/{prov}/{kab}/{kec}/{pdp}/{stat}/{fileName:.+}")
+	public void exportCSV(@PathVariable("fileName") String fileName,
+			@PathVariable("prov") Integer prov,
+			@PathVariable("kab") Integer kab,
+			@PathVariable("kec") Integer kec,
+			@PathVariable("pdp") String pdp,
+			@PathVariable("stat") String stat,
+			HttpServletResponse response) { 
+		String homeFolder = System.getProperty("user.home");
+		String dataDirectory = homeFolder + File.separator ;
 	    try {
+	    	System.out.println("dir");
+	    	FileWriter writer = new FileWriter(dataDirectory + fileName);
+	    	
 	    	List<Object[]> list = null; //tkpmservice.findAll();
+	    	if ("all".equalsIgnoreCase(stat)){
+				list = tkpmservice.findAll(prov, kab, kec, pdp);
+			}
+			else{
+				list = tkpmservice.findAll(prov, kab, kec, pdp, stat);
+			}
 	    	StringBuffer sb = new StringBuffer();
 	    	for (Object[] objects : list) {
-				sb.append(Arrays.asList(objects)).append("\n");
+//				sb.append(StringUtils.join(objects, ",")).append("\n");
+	    		sb.append(Arrays.asList(objects).stream()
+	    				.map((s) -> "\"" + s + "\"")
+	    				.collect(Collectors.joining(","))).append("\n");
 			}
-	    	response.setContentType("text/plain; charset=utf-8");
-			response.getWriter().print(sb.toString());
+	    	writer.write(sb.toString());
+	    	writer.close();
+	    	Path file = Paths.get(dataDirectory, fileName);
+	    	response.addHeader("Content-Disposition", "attachment; filename="+fileName);
+	    	Files.copy(file, response.getOutputStream());
+            response.getOutputStream().flush();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
