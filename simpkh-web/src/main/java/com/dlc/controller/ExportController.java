@@ -74,15 +74,25 @@ public class ExportController {
 	@GetMapping("/getExport")
 	public ModelAndView getExportdata(@RequestParam("prov") Integer prov,
 			@RequestParam("kab") Integer kab,
-			@RequestParam("kec") Integer kec){
+			@RequestParam("kec") Integer kec,
+			@RequestParam("pdp") String pdp,
+			@RequestParam("stat") String stat){
+		List<Object[]> list = null;
+		if ("all".equalsIgnoreCase(stat)){
+			list = tkpmservice.findAll(prov, kab, kec, pdp);
+		}
+		else{
+			list = tkpmservice.findAll(prov, kab, kec, pdp, stat);
+		}
 		ModelAndView modelAndView = new ModelAndView();
-		List<Object[]> list = tkpmservice.findAll(prov, kab, kec);
 //		for(Object[] arr : list){
 //			System.out.println(Arrays.asList(arr));
 //		}
 		System.out.println("kdprov: "+prov);
 		System.out.println("kdkab: "+kab);
 		System.out.println("kdkec: "+kec);
+		System.out.println("pendamping: "+pdp);
+		System.out.println("stat: "+stat);
 		modelAndView.addObject("list", list);
 		modelAndView.setViewName("exportresertifikasi :: resultsList");
 		return modelAndView;

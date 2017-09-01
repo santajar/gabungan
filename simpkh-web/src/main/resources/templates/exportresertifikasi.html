@@ -156,7 +156,9 @@
    			        url : "/getExport",
    			        data : {prov:$('#kodePropinsi').val(),
    			        	kab:$('#kodeKabupaten').val(),
-   			        	kec:$("#kodeKecamatan").val()},
+   			        	kec:$("#kodeKecamatan").val(),
+   			        	pdp:$("#kodePendamping").val(),
+   			        	stat:$("#status").val()},
    			        success : function(data) {
    			        	//alert(data);
    			        	$("#dvData").html(data);
